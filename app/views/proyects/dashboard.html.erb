@@ -1,0 +1,85 @@
+
+<div class="p-1 mb-1 bg-secondary text-black border border-5">
+    <h1>Nuevo Proyecto</h1>
+</div>
+
+
+
+<form action="<%= proyects_create_path %>">
+
+    <div class="mb-3">
+        <label for="form_name" class="form-label">Nombre del proyecto</label>
+        <input name="name" class="form-control" type="text">
+    </div>
+
+    <div class="mb-3">
+        <label for="form_description" class="form-label">Descripción</label>
+        <textarea name="description" class="form-control" rows="3"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="form_started" class="form-label">Fecha de comienzo</label>
+        <input name="started" class="form-control" type="date" value="<%= '08-01-2021' %>">
+    </div>
+
+    <div class="mb-3">
+        <label for="form_finished" class="form-label">Fecha de termino</label>
+        <input name="finished" class="form-control" type="date">
+    </div>
+
+    Estado: <select name="state"><br>
+        
+        <option value="propuesta">Propuesta</option>
+        <option value="en progreso">En progreso</option>
+        <option value="terminado">Terminado</option>
+
+    </select><br>
+
+
+    
+    <br><input type="submit" value="Guardar" class="form-control-lg"><br>
+
+</form>
+
+<br>
+
+<div class="p-1 mb-1 bg-secondary text-black border border-5">
+    <h2>Gestor de Proyectos</h2>
+</div>
+
+<form class="form-control-md" action="<%= proyects_dashboard_path %>">
+    <select name="state"><br>
+        <option value="">Todos</option>
+        <option value="propuesta">Propuesta</option>
+        <option value="en progreso">En progreso</option>
+        <option value="terminado">Terminado</option>
+    </select>
+
+    <input class="form-control-md" type="submit" value="Buscar">
+
+</form>
+<br>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Fecha de comienzo</th>
+        <th>Fecha de termino</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @proyects.each do |proyect| %>
+        <tr>
+          <td><%= proyect.name %></td>
+          <td><%= proyect.description %></td>
+          <td><%= proyect.started %></td>
+          <td><%= proyect.finished %></td>
+          <td><%= proyect.state %></td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>

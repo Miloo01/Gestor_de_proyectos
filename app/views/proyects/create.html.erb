@@ -1,0 +1,11 @@
+<% if @proyect.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@proyect.errors.count, "error") %> Este proyecto no ha sido guardado:</h2>
+
+      <ul>
+      <% @proyect.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+<% end %> 
